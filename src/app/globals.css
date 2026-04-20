@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bd-green: #006A4E;
+  --bd-red: #F42A41;
+  --bd-gold: #F5C842;
+  --bd-cream: #FFF9F0;
+  --bg: #FFFFFF;
+  --surface: #F8FBF9;
+  --card: #FFFFFF;
+  --border: #E5F0EC;
+  --text-primary: #0D1F1A;
+  --text-secondary: #4A7A6A;
+  --text-muted: #8BA89E;
+}
+
+.dark {
+  --bg: #0A1628;
+  --surface: #0D1F38;
+  --card: #111F3A;
+  --border: #1E3050;
+  --text-primary: #F0F7F5;
+  --text-secondary: #7BBFAE;
+  --text-muted: #4A7A8A;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bd-green);
+  border-radius: 2px;
+}
+
+/* Number input no spinner */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@layer components {
+  .bdesh-card {
+    @apply bg-white dark:bg-bd-dark-card border border-[#E5F0EC] dark:border-bd-dark-border rounded-2xl;
+  }
+
+  .bdesh-btn-primary {
+    @apply bg-bd-green hover:bg-bd-green-light active:bg-bd-green-dark text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 active:scale-95 shadow-lg shadow-bd-green/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .bdesh-btn-secondary {
+    @apply bg-bd-red hover:bg-bd-red-light active:bg-bd-red-dark text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 active:scale-95 shadow-lg shadow-bd-red/20 disabled:opacity-50;
+  }
+
+  .bdesh-btn-ghost {
+    @apply bg-transparent hover:bg-bd-green/10 dark:hover:bg-bd-green/20 text-bd-green font-semibold py-3 px-5 rounded-xl transition-all duration-200 active:scale-95 border border-bd-green/30;
+  }
+
+  .bdesh-input {
+    @apply w-full bg-[#F8FBF9] dark:bg-bd-dark-bg border border-[#D1E8DF] dark:border-bd-dark-border rounded-xl px-4 py-3.5 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-bd-green/40 focus:border-bd-green transition-all duration-200 text-base;
+  }
+
+  .bdesh-tab {
+    @apply flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200;
+  }
+
+  .bdesh-tab-active {
+    @apply bg-bd-green text-white shadow-md;
+  }
+
+  .bdesh-tab-inactive {
+    @apply text-[var(--text-secondary)] hover:bg-bd-green/10;
+  }
+}
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(90deg, 
+    rgba(0,106,78,0.05) 25%,
+    rgba(0,106,78,0.15) 50%,
+    rgba(0,106,78,0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Safe area for MiniPay */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Page transitions */
+.page-enter {
+  animation: slideUp 0.3s ease-out;
+}
