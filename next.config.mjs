@@ -8,10 +8,6 @@ const nextConfig = {
       tls: false,
       crypto: false,
     };
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "valtio/vanilla": require.resolve("valtio/vanilla"),
-    };
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
